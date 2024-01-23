@@ -12,5 +12,9 @@
                 <span class="fw-bold">Added: </span> {{ date('d-m-Y', strtotime($project->created_at)) }}
             </li>
         </ul>
+
+        
+        <a href="{{ route('admin.projects.edit', ['project' =>$project->slug]) }}" class="btn btn-warning">Edit You Project</a>
+        
     </div>
 @endsection

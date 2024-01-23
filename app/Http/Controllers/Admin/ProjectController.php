@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
+use App\Http\Requests\UpdateProjectRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -54,8 +55,10 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function show(Project $project)
+    public function show($slug)
     {
+        $project = Project::where('slug',$slug)->first();
+
         return view('admin.projects.show', compact('project'));
     }
 
@@ -65,9 +68,11 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function edit(Project $project)
+    public function edit($slug)
     {
-        //
+        $project = Project::where('slug',$slug)->first();
+
+        return view('admin.projects.edit', compact('project'));
     }
 
     /**
@@ -77,9 +82,15 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Project $project)
+    public function update(UpdateProjectRequest $request, $slug)
     {
-        //
+        $form_data = $request->validated();
+        $project_to_update = Project::where('slug',$slug)->first();
+        $project_to_update->update($form_data);
+
+
+
+        return redirect()->route('admin.projects.show', ['project' => $project_to_update->slug]);
     }
 
     /**
