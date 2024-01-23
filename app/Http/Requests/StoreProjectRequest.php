@@ -33,7 +33,7 @@ class StoreProjectRequest extends FormRequest
     public function messages()
     {
         return [
-            'title.required'=>'Title of the project is required',
+            'title.required' => 'Title of the project is required',
             'title.min' => 'Title lenght must be at least of :min letters',
             'title.min' => 'Title lenght must max of :max letters',
             'description.required' => 'Description of the project is required',

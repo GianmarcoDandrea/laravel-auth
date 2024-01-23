@@ -33,7 +33,7 @@ class UpdateProjectRequest extends FormRequest
     public function messages()
     {
         return [
-            'title.required'=>'Title of the project is required',
+            'title.required' => 'Title of the project is required',
             'title.unique' => 'This title has already been taken. Choose another',
             'title.min' => 'Title lenght must be at least of :min letters',
             'title.min' => 'Title lenght must max of :max letters',

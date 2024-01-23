@@ -12,13 +12,14 @@
             </ul>
         @endif
 
-        <form class="mt-5" action="{{ route('admin.projects.update', ['project' =>$project->slug]) }}" method="POST">
+        <form class="mt-5" action="{{ route('admin.projects.update', ['project' => $project->slug]) }}" method="POST">
             @csrf
             @method('PUT')
 
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
-                <input type="text" class="form-control" id="title" name="title" value="{{ old('title') ?? $project->title }}"">
+                <input type="text" class="form-control" id="title" name="title"
+                    value="{{ old('title') ?? $project->title }}"">
             </div>
 
             <div class="mb-3">

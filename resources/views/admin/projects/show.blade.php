@@ -13,8 +13,9 @@
             </li>
         </ul>
 
-        
-        <a href="{{ route('admin.projects.edit', ['project' =>$project->slug]) }}" class="btn btn-warning">Edit You Project</a>
-        
+
+        <a href="{{ route('admin.projects.edit', ['project' => $project->slug]) }}" class="btn btn-warning">Edit You
+            Project</a>
+
     </div>
 @endsection
