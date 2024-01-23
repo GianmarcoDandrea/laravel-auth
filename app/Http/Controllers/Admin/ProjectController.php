@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project;
-use App\Http\Requests\StorePostRequest;
+use App\Http\Requests\StoreProjectRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -37,9 +37,15 @@ class ProjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProjectRequest $request)
     {
-        //
+        $form_data = $request->validated();
+        $project = new Project();
+        $project->fill($form_data);
+        $project->slug = Str::slug($project->title, '-');
+        $project->save();
+
+        return redirect()->route('admin.projects.show', ['project' => $project->slug]);
     }
 
     /**
