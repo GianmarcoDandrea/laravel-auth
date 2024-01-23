@@ -66,7 +66,7 @@
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
                                     href="{{ route('admin.projects.index') }}">
                                     <i class="fa-solid fa-diagram-project fa-lg fa-fw"></i></i> Projects
-                                    
+
                                 </a>
                             </li>
                         </ul>

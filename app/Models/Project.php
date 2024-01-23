@@ -11,11 +11,11 @@ class Project extends Model
 {
     use HasFactory;
 
-    public $fillable = ['title','description'];
+    public $fillable = ['title', 'description'];
 
     public function setTitleAttribute($value)
     {
-        $this->attributes['title']=$value;
-        $this->attributes['slug']=Str::slug($value);
+        $this->attributes['title'] = $value;
+        $this->attributes['slug'] = Str::slug($value);
     }
 }

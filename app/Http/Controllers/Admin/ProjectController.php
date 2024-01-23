@@ -57,7 +57,7 @@ class ProjectController extends Controller
      */
     public function show($slug)
     {
-        $project = Project::where('slug',$slug)->first();
+        $project = Project::where('slug', $slug)->first();
 
         return view('admin.projects.show', compact('project'));
     }
@@ -70,7 +70,7 @@ class ProjectController extends Controller
      */
     public function edit($slug)
     {
-        $project = Project::where('slug',$slug)->first();
+        $project = Project::where('slug', $slug)->first();
 
         return view('admin.projects.edit', compact('project'));
     }
@@ -85,7 +85,7 @@ class ProjectController extends Controller
     public function update(UpdateProjectRequest $request, $slug)
     {
         $form_data = $request->validated();
-        $project_to_update = Project::where('slug',$slug)->first();
+        $project_to_update = Project::where('slug', $slug)->first();
         $project_to_update->update($form_data);
 
 
@@ -101,9 +101,9 @@ class ProjectController extends Controller
      */
     public function destroy($slug)
     {
-        $project = Project::where('slug',$slug)->first();
+        $project = Project::where('slug', $slug)->first();
         $project->delete();
 
-        return redirect()->route('admin.projects.index')->with('message', 'The project "'.$project->title.'" has been deleted');
+        return redirect()->route('admin.projects.index')->with('message', 'The project "' . $project->title . '" has been deleted');
     }
 }
