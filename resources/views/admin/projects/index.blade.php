@@ -16,6 +16,8 @@
             </div>
         @endif
 
+
+        @if (empty($projects))
         <table class="table table-striped mt-5 w-100">
             <thead>
                 <tr>
@@ -51,6 +53,12 @@
                 @endforeach
             </tbody>
         </table>
+            
+        @else
+            <div class="alert alert-warning w-50 mx-auto">
+                There's nothing yet. Add your first project.
+            </div>
+        @endif
     </div>
 
     @include('partials.delete-modal')
