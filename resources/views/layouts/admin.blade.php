@@ -65,8 +65,12 @@
 
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
                                     href="{{ route('admin.projects.index') }}">
-                                    <i class="fa-solid fa-diagram-project fa-lg fa-fw"></i></i> Projects
+                                    <i class="fa-solid fa-diagram-project fa-lg fa-fw"></i> Projects
+                                </a>
 
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
+                                    href="{{ route('admin.projects.trashed') }}">
+                                    <i class="fa-solid fa-trash fa-lg fa-fw"></i> Deleted Projects
                                 </a>
                             </li>
                         </ul>

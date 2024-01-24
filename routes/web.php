@@ -1,9 +1,12 @@
 <?php
 
-use App\Http\Controllers\Admin\DashboardController;
 
 use App\Http\Controllers\ProfileController;
+
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Admin\TrashedController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,8 +29,16 @@ Route::middleware(['auth', 'verified'])
     ->name('admin.')
     ->prefix('admin')
     ->group(function () {
+
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
         Route::resource('projects', ProjectController::class)->parameters(['projects' => 'project:slug']);
+
+        //TRASH ROUTE
+        Route::get('trashed', [TrashedController::class, 'index'])->name('projects.trashed');
+        Route::get('trashed/{project:slug}', [TrashedController::class, 'restore'])->withTrashed()->name('restore');
+        Route::delete('trashed/{project:slug}', [TrashedController::class, 'delete'])->withTrashed()->name('delete');
     });
 
 require __DIR__ . '/auth.php';
+
+

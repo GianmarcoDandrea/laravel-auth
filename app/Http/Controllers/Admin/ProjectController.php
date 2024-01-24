@@ -54,9 +54,8 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public function show(Project $project)
     {
-        $project = Project::where('slug', $slug)->first();
 
         return view('admin.projects.show', compact('project'));
     }
@@ -67,9 +66,8 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function edit($slug)
+    public function edit(Project $project)
     {
-        $project = Project::where('slug', $slug)->first();
 
         return view('admin.projects.edit', compact('project'));
     }
@@ -81,15 +79,14 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateProjectRequest $request, $slug)
+    public function update(UpdateProjectRequest $request, Project $project)
     {
         $form_data = $request->validated();
-        $project_to_update = Project::where('slug', $slug)->first();
-        $project_to_update->update($form_data);
+        $project->update($form_data);
 
 
 
-        return redirect()->route('admin.projects.show', ['project' => $project_to_update->slug]);
+        return redirect()->route('admin.projects.show', ['project' => $project->slug]);
     }
 
     /**
