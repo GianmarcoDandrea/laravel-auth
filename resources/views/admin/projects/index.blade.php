@@ -17,7 +17,7 @@
         @endif
 
 
-        @if (empty($projects))
+        @if (count($projects) > 0)
         <table class="table table-striped mt-5 w-100">
             <thead>
                 <tr>
